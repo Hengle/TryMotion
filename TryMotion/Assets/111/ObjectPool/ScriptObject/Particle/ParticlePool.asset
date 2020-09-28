@@ -1,0 +1,312 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c036db5074a87144b9203d2b5a71e7ad, type: 3}
+  m_Name: ParticlePool
+  m_EditorClassIdentifier: 
+  poolContent: "Buff\u7C92\u5B50"
+  objectPool:
+  - prefName: "-----------\u91D1-buff-----------"
+    prefConent: "\u91D1-buff"
+    pref: {fileID: 0}
+    InitPreAmount: 1
+    isAutoIncrease: 0
+    pooledList: []
+  - prefName: "\u91D1\u7535\u611F"
+    prefConent: "\u7535\u611F"
+    pref: {fileID: 5183071650395538776, guid: 9716cfe743e4242e593a7ea7cb453414, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u91D1\u6613\u4F24"
+    prefConent: "\u91D1\u6613\u4F24"
+    pref: {fileID: 3553564320549568613, guid: 5e2aa6260ae02401ca79c551f2a6d730, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u91D1\u5F15\u7206\u771F\u4F24"
+    prefConent: "\u91D1\u5F15\u7206\u771F\u4F24"
+    pref: {fileID: 3428998373788783896, guid: 0b3c77e67766041809252b3c109f4c4e, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u91D1\u7529\u624B"
+    prefConent: "\u91D1\u7529\u624B"
+    pref: {fileID: 1601674530, guid: 954059b74bcda4d1c9545a9cde1d5125, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "-----------\u6728-buff-----------"
+    prefConent: 
+    pref: {fileID: 0}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u4E2D\u6BD2"
+    prefConent: "\u4E2D\u6BD2"
+    pref: {fileID: 2858032134928191763, guid: 2d9e3705c031241dbb0eba7312a0dd2e, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - prefName: "\u6BD2\u53D1"
+    prefConent: "\u6BD2\u53D1"
+    pref: {fileID: 8833999324999322279, guid: 5a34dd9ffc06040ae990a2433fbcb101, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u6BD2\u7206"
+    prefConent: "\u6BD2\u7206"
+    pref: {fileID: 3413775485009209958, guid: 0579ee176d00c47d5ba8a2b86615b7bb, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u6728\u7075"
+    prefConent: "\u6728\u7075"
+    pref: {fileID: 3077247053404471437, guid: d60374480f715427b9c6fc92f20c5e71, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u6728\u7529\u624B"
+    prefConent: "\u6728\u7529\u624B"
+    pref: {fileID: 1601674530, guid: 6c408b94a6c1347b4933d998088d848a, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u67285\u88AB \u6BCF\u5C42"
+    prefConent: "\u67285\u88AB \u6BCF\u5C42"
+    pref: {fileID: 6067433517855021596, guid: 7b47a1adeca3a43b2a3a254f16b79fc2, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u67285\u88AB 5\u5C42"
+    prefConent: "\u67285\u88AB 5\u5C42"
+    pref: {fileID: 1844110630403030290, guid: 4a977a1bc66dd49ba82446464c5d18c6, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "-----------\u6C34-buff-----------"
+    prefConent: 
+    pref: {fileID: 3413775485009209958, guid: 0579ee176d00c47d5ba8a2b86615b7bb, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u6C34\u7F13"
+    prefConent: "\u6C34\u7F13"
+    pref: {fileID: 7758133045460990991, guid: f124d222e68e445a68f28c429647f3e0, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u51BB\u7ED3"
+    prefConent: "\u51BB\u7ED3"
+    pref: {fileID: 5095570531525876452, guid: 3d74f8a1942854507b9cd0096faf8190, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u51B0\u5757\u788E\u88C2\uFF08\u65B0\uFF09"
+    prefConent: "\u51B0\u5757\u788E\u88C2\uFF08\u65B0\uFF09"
+    pref: {fileID: 5234530108199351199, guid: 7933582ac4d7d40a180ad0f11f4be68a, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u51BB\u7ED3\u7ED3\u675F"
+    prefConent: "\u51BB\u7ED3\u7ED3\u675F"
+    pref: {fileID: 140673892, guid: a5cad4b5e32fa4b9ebc6862d816e87b5, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u6C34\u7529\u624B"
+    prefConent: "\u6C34\u7529\u624B"
+    pref: {fileID: 519330752984216170, guid: 3b34362c986a34317b3096d54c9d64c0, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "-----------\u706B-buff-----------"
+    prefConent: 
+    pref: {fileID: 140673892, guid: a5cad4b5e32fa4b9ebc6862d816e87b5, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u71C3\u70E7"
+    prefConent: "\u71C3\u70E7"
+    pref: {fileID: 5122656797149046040, guid: 88139f35cf0bf46b9866fb26cc516e5d, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - prefName: "\u706B\u707C\u70E7"
+    prefConent: "\u706B\u707C\u70E7"
+    pref: {fileID: 8836216517901147465, guid: e33cd785c2bb94f97ae4190d619352db, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u71C3\u7206(\u7B80\u5316)"
+    prefConent: "\u71C3\u7206(\u7B80\u5316)"
+    pref: {fileID: 5248642953333948975, guid: 37ec7ea5feb8244549abb2649c6246cb, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u71C3\u7206(\u590D\u6742)"
+    prefConent: "\u71C3\u7206(\u590D\u6742)"
+    pref: {fileID: 7687123671516147011, guid: 4b5780fd4a3cb43e3a7f19f0985d9208, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u706B\u7529\u624B"
+    prefConent: "\u706B\u7529\u624B"
+    pref: {fileID: 1601674530, guid: eeb12246509c744549b7e5f831d4b2cb, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "-----------\u571F-buff-----------"
+    prefConent: 
+    pref: {fileID: 7687123671516147011, guid: 4b5780fd4a3cb43e3a7f19f0985d9208, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u571F\u5F31"
+    prefConent: "\u571F\u5F31"
+    pref: {fileID: 7250546664491574117, guid: 31590564552994916b98475805fc7aa4, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u6C99\u5316"
+    prefConent: "\u6C99\u5316"
+    pref: {fileID: 8364879200927921161, guid: d9f74b991d3d346d3a08ee553d996f33, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u6D41\u6C99\u5708"
+    prefConent: "\u6D41\u6C99\u5708"
+    pref: {fileID: 7177840718323808285, guid: 04fe52f975b54459f999b2463b645d91, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u7834\u571F"
+    prefConent: "\u7834\u571F"
+    pref: {fileID: 7250546664491574117, guid: bf432123fe4b0407ab4c115ddf85bcbf, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u6C99\u5316\u5F00\u59CB"
+    prefConent: "\u6C99\u5316\u5F00\u59CB"
+    pref: {fileID: 4200148858694959699, guid: c669e4f9b1d5140ec9659584bd36642c, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u6C99\u5316\u7ED3\u675F"
+    prefConent: "\u6C99\u5316\u7ED3\u675F"
+    pref: {fileID: 2169705548321694892, guid: 52ee06db44584473abba24b968577a26, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u77F3\u5316\u5F00\u59CB"
+    prefConent: "\u77F3\u5316\u5F00\u59CB"
+    pref: {fileID: 2646380617445080855, guid: 5e8427827f3314818b7bc7953979d83e, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u77F3\u5316\u7ED3\u675F"
+    prefConent: "\u77F3\u5316\u7ED3\u675F"
+    pref: {fileID: 2646380617445080855, guid: 88ebb84e20e484ef3ac67ad96e114b45, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u571F\u7529\u624B"
+    prefConent: "\u571F\u7529\u624B"
+    pref: {fileID: 519330752984216170, guid: 505c77c873f7d483c9a9086de863c0de, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "-----------\u589E\u76CA-buff-----------"
+    prefConent: 
+    pref: {fileID: 519330752984216170, guid: 505c77c873f7d483c9a9086de863c0de, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u5C0F\u589E\u76CA 2"
+    prefConent: "\u5C0F\u589E\u76CA 2"
+    pref: {fileID: 4231240311176798092, guid: 4954cd41c2e33477780e6853dfcb83d5, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u91D1-\u5C0F\u589E\u76CA"
+    prefConent: "\u91D1-\u5C0F\u589E\u76CA"
+    pref: {fileID: 4231240311176798092, guid: d02996b2d6b0d4371b25f9f287fcb292, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u6C345\u79FB\u901F\u52A0\u5FEB"
+    prefConent: "\u6C345\u79FB\u901F\u52A0\u5FEB"
+    pref: {fileID: 3961327456938751483, guid: bc46dcefdac3a45ed92cd7ca9593c7a8, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u7834\u571F"
+    prefConent: "\u7834\u571F"
+    pref: {fileID: 2154678325584289672, guid: 71735083467f048dfb6d81be8ff94c77, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "-----------\u989D\u5916-buff-----------"
+    prefConent: 
+    pref: {fileID: 2154678325584289672, guid: 71735083467f048dfb6d81be8ff94c77, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u5C0F\u9E21\u7F20\u8EAB"
+    prefConent: "\u5C0F\u9E21\u7F20\u8EAB"
+    pref: {fileID: 2154678325584289672, guid: 71735083467f048dfb6d81be8ff94c77, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
