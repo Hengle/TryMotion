@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c036db5074a87144b9203d2b5a71e7ad, type: 3}
+  m_Name: FirstLevel-Pool
+  m_EditorClassIdentifier: 
+  poolContent: "\u4EE5\u4E0B\u662F\u7B2C\u4E00\u5173,\u5168\u90E8\u654C\u4EBA!"
+  objectPool:
+  - prefName: Boss_MonkeyKing
+    prefConent: "\u7B2C\u4E00\u5173,\u7334\u738B(Boss)"
+    pref: {fileID: 5342173505266299549, guid: a91d3d62e6f5548c5b3ff3b9199b9811, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "------------\u5206\u5272\u7EBF------------ (\u4EE5\u4E0B\u4E3A\u7CBE\u82F1\u5C0F\u602A)"
+    prefConent: 
+    pref: {fileID: 0}
+    InitPreAmount: 5
+    isAutoIncrease: 0
+    pooledList: []
+  - prefName: EliteMonster_CloseCombatHouzi_Gold
+    prefConent: "\u7CBE\u82F1\u602A-\u8FD1\u6218\u7334\u5B50(\u91D1)"
+    pref: {fileID: 5606940836273738672, guid: 77c2170e0f9f546e18b762e7717b64c0, type: 3}
+    InitPreAmount: 5
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: EliteMonster_CloseCombatHouzi_Water
+    prefConent: "\u7CBE\u82F1\u602A-\u8FD1\u6218\u7334\u5B50(\u6C34)"
+    pref: {fileID: 4785572423712884478, guid: 726e616aafe564828a12bf8ecf572437, type: 3}
+    InitPreAmount: 5
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: EliteMonster_CloseCombatHouzi_Wood
+    prefConent: "\u7CBE\u82F1\u602A-\u8FD1\u6218\u7334\u5B50(\u6728)"
+    pref: {fileID: 1202624750299529455, guid: af8b48ce9a6af46219ff3afb064995dc, type: 3}
+    InitPreAmount: 5
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: EliteMonster_RemoteHouzi_Earth
+    prefConent: "\u7CBE\u82F1\u602A-\u8FDC\u7A0B\u7334\u5B50(\u571F)"
+    pref: {fileID: 2550763862263987001, guid: b3ace6b2c63454c418df245a256aed80, type: 3}
+    InitPreAmount: 5
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: EliteMonster_RemoteHouzi_Gold
+    prefConent: "\u7CBE\u82F1\u602A-\u8FDC\u7A0B\u7334\u5B50(\u91D1)"
+    pref: {fileID: 6742815017873999201, guid: 42c14ceb3c6a94ae5baf005c14d5d605, type: 3}
+    InitPreAmount: 5
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: EliteMonster_RemoteHouzi_Wood
+    prefConent: "\u7CBE\u82F1\u602A-\u8FDC\u7A0B\u7334\u5B50(\u6728)"
+    pref: {fileID: 468003512594459652, guid: 858b9d40e5293419fbe5dd84bd1bea9c, type: 3}
+    InitPreAmount: 5
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "------------\u5206\u5272\u7EBF------------ (\u4EE5\u4E0B\u4E3A\u666E\u901A\u5C0F\u602A)"
+    prefConent: 
+    pref: {fileID: 0}
+    InitPreAmount: 5
+    isAutoIncrease: 0
+    pooledList: []
+  - prefName: Monster_CloseCombatHouzi_Gold
+    prefConent: "\u8FD1\u6218\u7334\u5B50(\u91D1)"
+    pref: {fileID: 5606940836273738672, guid: d7681e2fe2d4a4ff3ac5268455bc4dc9, type: 3}
+    InitPreAmount: 5
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: Monster_CloseCombatHouzi_Water
+    prefConent: "\u8FD1\u6218\u7334\u5B50(\u6C34)"
+    pref: {fileID: 4785572423712884478, guid: 3201ee0c678ce4d2986fc1914e0060b6, type: 3}
+    InitPreAmount: 5
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: Monster_CloseCombatHouzi_Wood
+    prefConent: "\u8FD1\u6218\u7334\u5B50(\u6728)"
+    pref: {fileID: 1202624750299529455, guid: 0357072f89c054f19bd976a7e5ccbdd1, type: 3}
+    InitPreAmount: 5
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: Monster_RemoteHouzi_Earth
+    prefConent: "\u8FDC\u7A0B\u7334\u5B50(\u571F)"
+    pref: {fileID: 2550763862263987001, guid: ad4d39b8b9cd34d02b04de6d3cc7374b, type: 3}
+    InitPreAmount: 5
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: Monster_RemoteHouzi_Gold
+    prefConent: "\u8FDC\u7A0B\u7334\u5B50(\u91D1)"
+    pref: {fileID: 6742815017873999201, guid: 8f83a3c3ae3a943c79fdb95df07262d4, type: 3}
+    InitPreAmount: 5
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: Monster_RemoteHouzi_Wood
+    prefConent: "\u8FDC\u7A0B\u7334\u5B50(\u6728)"
+    pref: {fileID: 468003512594459652, guid: 814409d6445d340f38877d577040ddd7, type: 3}
+    InitPreAmount: 5
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "------------\u5206\u5272\u7EBF------------ (\u4EE5\u4E0B\u4E3ANPC)"
+    prefConent: NPC
+    pref: {fileID: 0}
+    InitPreAmount: 0
+    isAutoIncrease: 0
+    pooledList: []
+  - prefName: RuneNpc
+    prefConent: "\u9B42\u77F3NPC"
+    pref: {fileID: 4267700986302596898, guid: 3b44587e0abde4f63b8a9b735ae23964, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u8001\u592A\u5F85\u673A"
+    prefConent: "\u56DE\u8840\u623FNPC"
+    pref: {fileID: 1507786959336433939, guid: 3fb621af24bd64c9197216d39641c436, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u8001\u5934\u5F85\u673A"
+    prefConent: "\u56DE\u8840\u623FNPC"
+    pref: {fileID: 6499660111184251973, guid: 1249abde5a2d1460fb7e6942cb9a1cf9, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []
+  - prefName: "\u5C0F\u9E21"
+    prefConent: "\u56DE\u8840\u623F-\u5C0F\u9E21"
+    pref: {fileID: 6861551816640978145, guid: 6777fa23334affa4598e6bcc17074fcd, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList: []

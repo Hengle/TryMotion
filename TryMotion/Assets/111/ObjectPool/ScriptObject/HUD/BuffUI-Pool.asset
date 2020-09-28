@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c036db5074a87144b9203d2b5a71e7ad, type: 3}
+  m_Name: BuffUI-Pool
+  m_EditorClassIdentifier: 
+  poolContent: "\u4E94\u884C\u3001buff\u3001\u6280\u80FD"
+  objectPool:
+  - prefName: BuffUI-Container
+    prefConent: "\u6302\u8F7D\u5728\u654C\u4EBA\u8EAB\u4E0A,\u5DE6(\u4E94\u884Cbuff)|\u53F3(\u4E94\u884Cdebuff)|\u4E0A(\u6280\u80FDbuff)"
+    pref: {fileID: 941973193803991835, guid: ab583e9e6d5d74bd88aa16821d0b61b5, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 1
+    pooledList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - prefName: BuffUI-Item
+    prefConent: BuffUI-Item
+    pref: {fileID: 941973193803991835, guid: a610d967263aa4cbab44dfed5cccfa3b, type: 3}
+    InitPreAmount: 5
+    isAutoIncrease: 1
+    pooledList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
