@@ -16,7 +16,12 @@ public class WeaponRacast : MonoBehaviour
     [SerializeField] TrailRenderer trailRenderer;
 
     [Header("射击")]
-    int fireRate = 25;
+    [SerializeField] int fireRate = 25;
+    [SerializeField] int bulletCount = 50;
+    [SerializeField] float cartridgeInvertal = 3f;//换弹夹间隔
+
+    //public
+    public bool isFire = false;
 
     void Awake()
     {
@@ -49,42 +54,81 @@ public class WeaponRacast : MonoBehaviour
 
     }
 
-    public void FirstFire() 
-    {
-    
-    }
-
-    public void UpdateFire(float DeltaTime) 
-    {
-    
-    }
+    #region 射击
 
     Ray ray;
     RaycastHit hitInfo;
     float accumulatedTime;//射击累计时间
-    float fireDuration = 1;
 
-    /// <summary>
-    /// 射击
-    /// </summary>
-    public void MuzzleShotting()
+    //射击
+    int currentBulletNum = 0;
+    float cartridgeTime = 0;
+
+
+    public void StartFire()
     {
-        muzzleEfx.Emit(1);//枪焰
+        isFire = true;
+        accumulatedTime = 0;
+        FireBullet();
+    }
 
+    public void UpdateFire(float DeltaTime)
+    {
+        if (currentBulletNum <= bulletCount)
+        {
+            accumulatedTime += DeltaTime;
+            float fireInvertal = 1.0f / fireRate;//发射速率
+            while (accumulatedTime >= fireInvertal)
+            {
+                currentBulletNum++;
+                FireBullet();
+                accumulatedTime -= fireInvertal;
+            }
+        }
+        else
+        {
+            //换弹夹
+            cartridgeTime += DeltaTime;
+            if (cartridgeTime >= cartridgeInvertal)
+            {
+                currentBulletNum = 0;
+            }
+        }
+    }
+
+    public void StopFire()
+    {
+        isFire = false;
+    }
+
+
+    void FireBullet()
+    {
+        //枪焰
+        muzzleEfx.Emit(1);
+        //发射Ray
         ray.origin = raycastOrigin.position;
-        ray.direction = aimLookAt.position - ray.origin;
+        ray.direction = crossHairTarget.position - raycastOrigin.position;
+
+        //生成激光线
         var tracer = Instantiate(trailRenderer , ray.origin , Quaternion.identity);
         tracer.AddPosition(ray.origin);
 
+        //射击检测
         if (Physics.Raycast(ray , out hitInfo))
         {
-            crossHairTarget.position = hitInfo.normal;
-            tracer.transform.position = hitInfo.point;
+            crossHairTarget.position = hitInfo.point;  //十字瞄准目标
+            tracer.transform.position = hitInfo.point;  //激光线
 
-            //射击碰撞火苗
-            //hitEfx.transform.position = hit
+            ///射击碰撞火苗
+            hitEfx.transform.position = hitInfo.point;
+            hitEfx.transform.forward = hitInfo.normal;
             hitEfx.Emit(1);
         }
     }
+
+    #endregion
+
+
 
 }

@@ -13,7 +13,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace L_Pool 
+namespace L_Pool
 {
     /// <summary>
     /// 池基类
@@ -55,6 +55,7 @@ namespace L_Pool
             if (rootPoolParent == null)
             {
                 rootPoolParent = new GameObject(poolContent + "--根池～～～～rootPoolParent");
+                ClearAllAssetObject();
                 rootPoolParent.transform.SetParent(GameObject.FindGameObjectWithTag("DontDestroyOnLoad").transform);
             }
 
@@ -86,19 +87,22 @@ namespace L_Pool
         public GameObject pref;     //克隆预制体
         public int InitPreAmount = 5;      //预先加载对象池容量
         public bool isAutoIncrease = true; //是否自动增长
+        public float autoDestroy;//递减销毁时间
+        [SerializeField] int freeObjCount = 0;
+        int natNumber = 0;//自然递增数值
 
 
         //对象池-根
         public Transform BasePoolParent { get; set; }
         Transform currentPoolParent;
 
-        public List<GameObject> pooledList;
+        public Queue<GameObject> poolQueue;
 
         public void Clear()
         {
-            if (pooledList != null)
+            if (poolQueue != null)
             {
-                pooledList.Clear();
+                poolQueue.Clear();
             }
         }
 
@@ -120,19 +124,25 @@ namespace L_Pool
             if (pref == null || string.IsNullOrEmpty(prefName)) { Debug.LogError(string.Format("对象池,prefName={0}" , prefName) + "对象池为空!!!"); return this; }
 
             //初始化
-            if (pooledList == null || pooledList.Count <= 0)
+            if (poolQueue == null || poolQueue.Count <= 0)
             {
-                pooledList = new List<GameObject>();
+                poolQueue = new Queue<GameObject>();
 
                 for (int i = 0; i < InitPreAmount; i++)
                 {
                     GameObject go = GameObject.Instantiate(pref);
+                    string oriName = go.name;
+                    natNumber++;
+                    oriName += "#" + natNumber;
+                    go.name = oriName;
                     //todo 注册回收事件
                     Register_PoolRecycleEvent(go);
-                    pooledList.Add(go);
+                    poolQueue.Enqueue(go);
                     go.transform.SetParent(currentPoolParent , false);
                     go.SetActive(false);
                 }
+
+                freeObjCount = InitPreAmount;
             }
             return this;
         }
@@ -143,68 +153,54 @@ namespace L_Pool
         public GameObject Recycle()
         {
             GameObject go = null;
-            for (int i = 0; i < pooledList.Count; i++)
+            go = poolQueue.Dequeue();
+            while (freeObjCount > 0)
             {
-                if (pooledList[i] == null) { pooledList.RemoveAt(i); continue; }
-                if (!pooledList[i].activeInHierarchy) //不在场景中显示,就可以复用!
+                if (!go.activeInHierarchy)
                 {
-                    go = pooledList[i];
                     go.SetActive(true);
+                    freeObjCount--;
+                    Debug.LogError(go.name);
+                    poolQueue.Enqueue(go);
+                    return go;
+                }
+                else
+                {
+                    poolQueue.Enqueue(go);
+                    go = poolQueue.Dequeue();
+                    while (!go.activeInHierarchy)
+                    {
+                        poolQueue.Enqueue(go);
+                        go = poolQueue.Dequeue();
+                    }
+                    if (!go.activeInHierarchy) 
+                    {
+                        go.SetActive(true);
+                        freeObjCount--;
+                        Debug.LogError(go.name);
+                        poolQueue.Enqueue(go);
+                    }
                     return go;
                 }
             }
-
-            //自动增加
-            if (isAutoIncrease)
+            if (freeObjCount <= 0)
             {
-                go = GameObject.Instantiate(pref);
-                //todo 注册回收事件
-                Register_PoolRecycleEvent(go);
-                pooledList.Add(go);
-                go.SetActive(true);
-                go.transform.SetParent(currentPoolParent , false);
-                return go;
-            }
-
-            return go;
-        }
-
-        /// <summary>
-        /// 针对粒子-复用
-        /// </summary>
-        public GameObject Recycle2Particle(GameObject TargetGO , float scaleFactor = 1)
-        {
-            GameObject go = null;
-            for (int i = 0; i < pooledList.Count; i++)
-            {
-                if (pooledList[i] == null) { pooledList.RemoveAt(i); continue; }
-                if (!pooledList[i].activeInHierarchy) //不在场景中显示,就可以复用!
+                go = null;
+                //自动增加
+                if (isAutoIncrease)
                 {
-                    go = pooledList[i];
+                    go = GameObject.Instantiate(pref);
+                    string oriName = go.name;
+                    natNumber++;
+                    oriName += "#"+natNumber;
+                    go.name = oriName;
+                    //todo 注册回收事件
+                    Register_PoolRecycleEvent(go);
+                    poolQueue.Enqueue(go);
                     go.SetActive(true);
-                    if (go.GetComponent<ParticleScaleFactor>() == null) { go.AddComponent<ParticleScaleFactor>(); }
-                    go.GetComponent<ParticleScaleFactor>().Scale2Amp(scaleFactor);
-                    go.GetComponent<ParticleScaleFactor>()._Target = TargetGO;
-
-                    return go;
+                    go.transform.SetParent(currentPoolParent , false);
                 }
             }
-
-            //自动增加
-            if (isAutoIncrease)
-            {
-                go = GameObject.Instantiate(pref);
-                //todo 注册回收事件
-                Register_PoolRecycleEvent(go);
-                pooledList.Add(go);
-                go.SetActive(true);
-                if (go.GetComponent<ParticleScaleFactor>() == null) { go.AddComponent<ParticleScaleFactor>(); }
-                go.GetComponent<ParticleScaleFactor>().Scale2Amp(scaleFactor);
-                go.GetComponent<ParticleScaleFactor>()._Target = TargetGO;
-                go.transform.SetParent(currentPoolParent , false);
-                return go;
-            }
-
             return go;
         }
 
@@ -220,9 +216,11 @@ namespace L_Pool
             {
                 go.GetComponent<PoolRecycle>().RecycleEvent = (GameObject entityGo) =>
                 {
-                    //Debug.LogError("entityGo.name = " + entityGo.name);
-                    if (entityGo.name == prefName + "(Clone)")
+                    Debug.LogError("entityGo.name = " + entityGo.name);
+                    string entityName = entityGo.name.Split('#')[0];
+                    if (entityName.Equals(prefName + "(Clone)" , System.StringComparison.InvariantCultureIgnoreCase))//这里大小写都不需要区分.
                     {
+                        freeObjCount++;
                         entityGo.transform.SetParent(currentPoolParent , false);
                         entityGo.transform.localPosition = Vector3.zero;
                         entityGo.transform.localEulerAngles = Vector3.zero;

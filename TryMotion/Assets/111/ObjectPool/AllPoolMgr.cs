@@ -29,11 +29,24 @@ namespace L_Pool
         [Header("对象池")]
         public string poolContent;
         public Pool bulletPool;
+        public Pool cubePool;
 
 
         void Awake()
         {
-            bulletPool.ClearAllAssetObject();
+            //bulletPool.ClearAllAssetObject();
+        }
+
+        private void Update()
+        {
+            //if (Input.GetKeyDown(KeyCode.G))
+            //{
+            //    GameObject arrowGo = bulletPool.FindCorrespondingPoolByPrefName("Arrow").Recycle();
+            //}
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                GameObject cubeGo = cubePool.FindCorrespondingPoolByPrefName("cube").Recycle();
+            }
         }
 
     }

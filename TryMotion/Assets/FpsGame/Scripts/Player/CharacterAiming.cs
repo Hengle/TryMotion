@@ -101,13 +101,18 @@ namespace fpsGame
                 RigLayer_AimPose.weight -= Time.deltaTime / aimDuration;
             }
             //射击
-            if (Input.GetMouseButtonDown(0) && isAim)
+            if (Input.GetButtonDown("Fire1") && isAim)
             {
-                weaponRacast.MuzzleShotting();
+                weaponRacast.StartFire();
             }
-            else
+            if (Input.GetButtonUp("Fire1"))
             {
-
+                weaponRacast.StopFire();
+            }
+            //持续射击
+            if (weaponRacast.isFire)
+            {
+                weaponRacast.UpdateFire(Time.deltaTime);
             }
 
         }

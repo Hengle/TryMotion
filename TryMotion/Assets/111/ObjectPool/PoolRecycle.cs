@@ -14,6 +14,11 @@ namespace L_Pool
         public delegate void Recycle(GameObject entityGo);//string recyclePrefName
         public Recycle RecycleEvent;
 
+        private void OnDisable()
+        {
+            RecycleEvent?.Invoke(this.gameObject);
+        }
+
         ////对地形无效.所有注释掉这种方法!
         //private void OnDisable()
         //{
