@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1636226954569850146}
   - component: {fileID: 6162507332179868359}
+  - component: {fileID: 1679592901223715650}
   m_Layer: 0
   m_Name: TrailEffect
   m_TagString: Untagged
@@ -71,7 +72,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.05
+  m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.05
@@ -122,9 +123,21 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 2
     shadowBias: 0.5
-    generateLightingData: 0
+    generateLightingData: 1
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &1679592901223715650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649755003818807602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15f305d23f822e4aac7004d53790f49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

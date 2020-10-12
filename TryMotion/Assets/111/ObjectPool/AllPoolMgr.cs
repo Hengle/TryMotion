@@ -28,8 +28,7 @@ namespace L_Pool
 
         [Header("对象池")]
         public string poolContent;
-        public Pool bulletPool;
-        public Pool cubePool;
+        public Pool missilesPool;
 
 
         void Awake()
@@ -43,10 +42,10 @@ namespace L_Pool
             //{
             //    GameObject arrowGo = bulletPool.FindCorrespondingPoolByPrefName("Arrow").Recycle();
             //}
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                GameObject cubeGo = cubePool.FindCorrespondingPoolByPrefName("cube").Recycle();
-            }
+            //if (Input.GetKeyDown(KeyCode.H))
+            //{
+            //    GameObject cubeGo = cubePool.FindCorrespondingPoolByPrefName("cube").Recycle();
+            //}
         }
 
     }

@@ -109,6 +109,7 @@ namespace fpsGame
             {
                 weaponRacast.StopFire();
             }
+            weaponRacast.UpdateBullet(Time.deltaTime);
             //持续射击
             if (weaponRacast.isFire)
             {

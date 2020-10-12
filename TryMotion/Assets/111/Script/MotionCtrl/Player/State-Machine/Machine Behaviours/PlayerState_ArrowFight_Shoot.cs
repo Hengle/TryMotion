@@ -32,7 +32,7 @@ public class PlayerState_ArrowFight_Shoot : PlayerStateInfo
     {
         if (_playerAnimCtrl == null) { _playerAnimCtrl = player.GetComponent<PlayerAnimationController>(); }
         if (_playerHangingObj == null) { _playerHangingObj = player.GetComponent<PlayerHangingObj>(); }
-        arrowGo = AllPoolMgr.Instance.bulletPool.FindCorrespondingPoolByPrefName("Arrow").Recycle();
+        arrowGo = AllPoolMgr.Instance.missilesPool.FindCorrespondingPoolByPrefName("Arrow").Recycle();
 
         shot_start = _playerHangingObj.hangingContainer[1].transform;
         shot_end = _playerHangingObj.hangingContainer[0].transform;

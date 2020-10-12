@@ -19,13 +19,19 @@ MonoBehaviour:
     pref: {fileID: 2657502277814330107, guid: 6153b455223e774498317ee959c0666e, type: 3}
     InitPreAmount: 3
     isAutoIncrease: 1
-    pooledList:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    autoDestroy: 0
+    freeObjCount: 0
+  - prefName: BulletImpactMetalEffect
+    prefConent: "\u5B50\u5F39\u51FB\u4E2D\u75D5\u8FF9"
+    pref: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
+    InitPreAmount: 1
+    isAutoIncrease: 0
+    autoDestroy: 0
+    freeObjCount: 1
   - prefName: TrailEfx
-    prefConent: "\u5B50\u5F39\u5F39\u9053\u75D5\u8FF9"
+    prefConent: "\u5899\u4F53\u5F39\u75D5"
     pref: {fileID: 649755003818807602, guid: f5a7ff3340732c740abfc3fc64ffdb60, type: 3}
     InitPreAmount: 10
     isAutoIncrease: 1
-    pooledList: []
+    autoDestroy: 0
+    freeObjCount: 0

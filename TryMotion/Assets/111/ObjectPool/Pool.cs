@@ -160,7 +160,7 @@ namespace L_Pool
                 {
                     go.SetActive(true);
                     freeObjCount--;
-                    Debug.LogError(go.name);
+                    //Debug.LogError(go.name);
                     poolQueue.Enqueue(go);
                     return go;
                 }
@@ -216,7 +216,7 @@ namespace L_Pool
             {
                 go.GetComponent<PoolRecycle>().RecycleEvent = (GameObject entityGo) =>
                 {
-                    Debug.LogError("entityGo.name = " + entityGo.name);
+                    //Debug.LogError("<color=#00ff00>entityGo.name = </color> " + entityGo.name);
                     string entityName = entityGo.name.Split('#')[0];
                     if (entityName.Equals(prefName + "(Clone)" , System.StringComparison.InvariantCultureIgnoreCase))//这里大小写都不需要区分.
                     {
