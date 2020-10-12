@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2667362660214249873
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2667362661523661584}
-  m_Layer: 0
-  m_Name: ref_leftHand_source
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2667362661523661584
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2667362660214249873}
-  m_LocalRotation: {x: -0.17019044, y: -0.96137506, z: 0.093585044, w: -0.19502601}
-  m_LocalPosition: {x: -0.122, y: 0.040999994, z: 0.23300001}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2667362661564235907}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 14.26, y: -200.73499, z: 17.456001}
 --- !u!1 &2667362660518410633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4930,7 +4900,6 @@ Transform:
   - {fileID: 2667362660757043438}
   - {fileID: 2667362660783795686}
   - {fileID: 2667362661817367728}
-  - {fileID: 2667362661564235907}
   - {fileID: 2667362661126136874}
   m_Father: {fileID: 2667362660592426760}
   m_RootOrder: 0
@@ -5026,13 +4995,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b7e141d1e6b9d47a745e5201592868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trailRenderer: {fileID: 6162507332179868359, guid: f5a7ff3340732c740abfc3fc64ffdb60,
-    type: 3}
   fireRate: 25
   bulletCount: 50
   cartridgeInvertal: 0
   bulletSpeed: 1000
-  bulletDrop: 0
+  bulletDrop: 30
   maxLifeTime: 3
   isFire: 0
 --- !u!1 &2667362661126136873
@@ -5065,7 +5032,7 @@ Transform:
   - {fileID: 2667362660518410634}
   - {fileID: 2667362661349049754}
   m_Father: {fileID: 2667362660806990004}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2667362661349049753
 GameObject:
@@ -5096,68 +5063,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2667362661126136874}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2667362661489397553
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2667362661746174231}
-  m_Layer: 0
-  m_Name: ref_rightHand_source
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2667362661746174231
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2667362661489397553}
-  m_LocalRotation: {x: 0.49903783, y: -0.37224427, z: -0.7568624, w: -0.19888401}
-  m_LocalPosition: {x: 0.008, y: -0.033999994, z: -0.153}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2667362661564235907}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -49.639004, y: -69.689, z: -173.753}
---- !u!1 &2667362661564235906
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2667362661564235907}
-  m_Layer: 0
-  m_Name: RigsSetup
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2667362661564235907
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2667362661564235906}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2667362661746174231}
-  - {fileID: 2667362661523661584}
-  m_Father: {fileID: 2667362660806990004}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2667362661817367759
 GameObject:

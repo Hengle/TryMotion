@@ -89,6 +89,7 @@ namespace fpsGame
         //处理武器
         void Update_HandleWeapon() 
         {
+            if (weaponRacast == null) { return; }
             //瞄准
             if (Input.GetMouseButton(1))
             {
