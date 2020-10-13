@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - DontDestroyOnLoad
-  - FootSound
   - Enemy
+  - Fire
   - Ground
   layers:
   - Default
@@ -17,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - Ground
+  - 
   - 
   - 
   - 

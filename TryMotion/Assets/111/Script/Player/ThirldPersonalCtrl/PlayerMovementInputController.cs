@@ -13,7 +13,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using XInputDotNetPure;
 
 public class PlayerMovementInputController : MonoBehaviour
 {

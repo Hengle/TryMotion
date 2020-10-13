@@ -24,8 +24,8 @@ MonoBehaviour:
   - prefName: BulletImpactMetalEffect
     prefConent: "\u5B50\u5F39\u51FB\u4E2D\u75D5\u8FF9"
     pref: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
-    InitPreAmount: 1
-    isAutoIncrease: 0
+    InitPreAmount: 2
+    isAutoIncrease: 1
     autoDestroy: 0
     freeObjCount: 1
   - prefName: TrailEfx
