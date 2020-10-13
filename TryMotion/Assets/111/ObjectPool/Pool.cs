@@ -103,6 +103,7 @@ namespace L_Pool
             if (poolQueue != null)
             {
                 poolQueue.Clear();
+                freeObjCount = 0;
             }
         }
 

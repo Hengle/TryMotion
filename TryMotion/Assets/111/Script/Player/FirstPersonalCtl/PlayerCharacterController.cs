@@ -24,10 +24,11 @@ public struct GroundStruct
 
     public void Init()
     {
-        groundCheckDistance = 0.05f;
+        groundCheckDistance = 0.1f;
         isOnGround = false;
         dropSpeed = 10;
         G = -9.81f;
+        onGroundLayer = ~LayerMask.GetMask("Player");
     }
 }
 
@@ -52,6 +53,8 @@ public struct CharacterPropertyStruct
 
     [Header("冲刺")]
     public float sprintMoveRatio;
+    public float normalMoveRatio;
+    public float currentMoveRatio;
 
     [Header("跳跃")]
     public float forceJumpPower;
@@ -69,6 +72,8 @@ public struct CharacterPropertyStruct
         verticalMinLimit = -89;
         moveSpeed = 3;
         sprintMoveRatio = 1.5f;
+        normalMoveRatio = 1f;
+        currentMoveRatio = 1f;
         forceJumpPower = 10;
         checkDistanceInAir = 0.07f;
     }
@@ -114,37 +119,37 @@ public class PlayerCharacterController : MonoBehaviour
         }
     }
 
-    private Camera mainCamera;
-    /// <summary>
-    /// 主摄像机
-    /// </summary>
-    public Camera MainCamera
-    {
-        get
-        {
-            if (mainCamera == null)
-            {
-                mainCamera = transform.Find("CameraContainer/MainCamera").GetComponent<Camera>();
-            }
-            return mainCamera;
-        }
-    }
+    //private Camera mainCamera;
+    ///// <summary>
+    ///// 主摄像机
+    ///// </summary>
+    //public Camera MainCamera
+    //{
+    //    get
+    //    {
+    //        if (mainCamera == null)
+    //        {
+    //            mainCamera = transform.Find("CameraContainer/MainCamera").GetComponent<Camera>();
+    //        }
+    //        return mainCamera;
+    //    }
+    //}
 
-    private Camera firstPersonalWeaponCamera;
-    /// <summary>
-    /// 第一人称武器摄像机
-    /// </summary>
-    public Camera FirstPersonalWeaponCamera
-    {
-        get
-        {
-            if (firstPersonalWeaponCamera == null)
-            {
-                firstPersonalWeaponCamera = transform.Find("CameraContainer/MainCamera/FirstPersonalWeaponCamera").GetComponent<Camera>();
-            }
-            return firstPersonalWeaponCamera;
-        }
-    }
+    //private Camera firstPersonalWeaponCamera;
+    ///// <summary>
+    ///// 第一人称武器摄像机
+    ///// </summary>
+    //public Camera FirstPersonalWeaponCamera
+    //{
+    //    get
+    //    {
+    //        if (firstPersonalWeaponCamera == null)
+    //        {
+    //            firstPersonalWeaponCamera = transform.Find("CameraContainer/MainCamera/FirstPersonalWeaponCamera").GetComponent<Camera>();
+    //        }
+    //        return firstPersonalWeaponCamera;
+    //    }
+    //}
 
 
     //地面检测点(Sphere)
@@ -200,7 +205,7 @@ public class PlayerCharacterController : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         if (CheckIsGround())
         {
@@ -217,8 +222,6 @@ public class PlayerCharacterController : MonoBehaviour
     /// </summary>
     bool CheckIsGround()
     {
-        #region 方案1
-
         float maxDistance = groundStruct.isOnGround ? CC.skinWidth + groundStruct.groundCheckDistance : characterProperty.checkDistanceInAir;
         RaycastHit hit;
         groundStruct.groundNormal = Vector3.up;
@@ -241,14 +244,6 @@ public class PlayerCharacterController : MonoBehaviour
             //不在地面.角色自动下坠.
             CC.Move(Vector3.down * Time.deltaTime * groundStruct.dropSpeed);
         }
-
-        #endregion
-
-        #region 方案2
-
-        //bool isOnGround = Physics.CheckSphere(CheckGroundPoint.position , 0.5f , onGroundLayer);
-
-        #endregion
 
         return groundStruct.isOnGround;
     }
@@ -278,39 +273,40 @@ public class PlayerCharacterController : MonoBehaviour
     /// </summary>
     void PerformPlayerMove()
     {
-        //控制人物视野限制
-        float view_X = InputHandleMgr.Instsance.GetLookInputsHorizontal() * characterProperty.rotationSpeed * characterProperty.RotationMultiplier;
-        float view_Y = InputHandleMgr.Instsance.GetLookInputsVertical() * characterProperty.rotationSpeed * characterProperty.RotationMultiplier;
+        ////控制人物视野限制
+        //float view_X = NewInputManager.Instance.LookPos.x * characterProperty.rotationSpeed * characterProperty.RotationMultiplier;
+        //float view_Y = NewInputManager.Instance.LookPos.y * characterProperty.rotationSpeed * characterProperty.RotationMultiplier;
 
-        if (Mathf.Abs(view_Y) >= 0.01f || Mathf.Abs(view_X) >= 0.01f)
-        {
-            //水平旋转
-            transform.Rotate(0 , view_X , 0);
-            //上下视野限制
-            cameraVerticalAngle -= view_Y;
-            cameraVerticalAngle = Mathf.Clamp(cameraVerticalAngle , characterProperty.verticalMinLimit , characterProperty.verticalMaxLimit);
-            MainCamera.transform.localEulerAngles = new Vector3(cameraVerticalAngle , 0 , 0);
-        }
+        //if (Mathf.Abs(view_Y) >= 0.01f || Mathf.Abs(view_X) >= 0.01f)
+        //{
+        //    //水平旋转
+        //    transform.Rotate(0 , view_X , 0);
+        //    //上下视野限制
+        //    cameraVerticalAngle -= view_Y;
+        //    cameraVerticalAngle = Mathf.Clamp(cameraVerticalAngle , characterProperty.verticalMinLimit , characterProperty.verticalMaxLimit);
+        //    MainCamera.transform.localEulerAngles = new Vector3(cameraVerticalAngle , 0 , 0);
+        //}
+
+        Vector3 dir = new Vector3(NewInputManager.Instance.Movement.x , 0 , NewInputManager.Instance.Movement.y);
 
         //是否冲刺
-        if (InputHandleMgr.Instsance.GetSprintInputHeld())
+        if (NewInputManager.Instance.IsSprint)
         {
             SetCrouchingState(false , false);
             float sprintRatio = characterProperty.sprintMoveRatio;
-            characterVelocity = InputManager.Instance.Movement * Time.deltaTime * characterProperty.moveSpeed * sprintRatio;
+            characterVelocity = dir * Time.deltaTime * characterProperty.moveSpeed * sprintRatio;
             characterVelocity = transform.TransformDirection(characterVelocity);
         }
         else
         {
             float sprintRatio = characterProperty.sprintMoveRatio;
-            characterVelocity = InputManager.Instance.Movement * Time.deltaTime * characterProperty.moveSpeed * sprintRatio;
+            characterVelocity = dir * Time.deltaTime * characterProperty.moveSpeed * sprintRatio;
             characterVelocity = transform.TransformDirection(characterVelocity);
         }
 
 
         if (IsNormalUnderSlopeLimit())
         {
-
             PerformJump();
             //CC 移动
             CC.Move(characterVelocity);
@@ -334,7 +330,7 @@ public class PlayerCharacterController : MonoBehaviour
     void PerformJump()
     {
         //跳跃
-        if (InputHandleMgr.Instsance.GetJumpInputDown())
+        if (NewInputManager.Instance.IsJump)
         {
             isJump = true;
             jumpHeight = 0;
@@ -363,7 +359,7 @@ public class PlayerCharacterController : MonoBehaviour
     /// </summary>
     void PerformPlayerSquat()
     {
-        if (InputHandleMgr.Instsance.GetCrouchInputDown())
+        if (NewInputManager.Instance.IsCrouch)
         {
             isCrouching = true;
             //角色控制器CC
@@ -372,9 +368,9 @@ public class PlayerCharacterController : MonoBehaviour
             //武器位置点,容器
             WeaponSocketContainer.DOLocalMoveY(-0.5f , 0.5f);
             //摄像机
-            MainCamera.transform.DOLocalMoveY(-0.5f , 0.5f);
+            //MainCamera.transform.DOLocalMoveY(-0.5f , 0.5f);
         }
-        if (InputHandleMgr.Instsance.GetCrouchInputReleased())
+        else
         {
             isCrouching = false;
             //角色控制器CC
@@ -382,8 +378,8 @@ public class PlayerCharacterController : MonoBehaviour
             DOTween.To(() => CC.height , (float c) => CC.height = c , characterProperty.characterHeight_Y , 0.5f);
             //武器位置点,容器
             WeaponSocketContainer.DOLocalMoveY(0 , 0.5f);
-            //摄像机
-            MainCamera.transform.DOLocalMoveY(0 , 0.5f);
+            ////摄像机
+            //MainCamera.transform.DOLocalMoveY(0 , 0.5f);
         }
     }
 
